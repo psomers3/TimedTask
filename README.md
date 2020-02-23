@@ -7,7 +7,7 @@ contain the root `toctree` directive. -->
 An thread-based module to create timed execution of a function. See examples folder for how to use.
 
 
-### class TimedTask.TimedTask(calling_function, object_to_wrap=None, sampling_rate: float = 0.1, calling_func_args: list = None, forwarding_function=None)
+### class TimedTask.TimedTask(calling_function, object_to_wrap=None, sampling_rate=10, calling_func_args=None, forwarding_function=None)
 Creates an object that maintains a reference (if desired) to another object and runs a function at a given fixed
 update rate.
 
