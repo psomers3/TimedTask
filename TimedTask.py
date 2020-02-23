@@ -17,8 +17,8 @@ class TimedTask(object):
         :type calling_function: function
 
         :param object_to_wrap: An instance of an object that is associated with the repetitive task. References to
-               this object can be obtained from two member methods of TimedTask under the name "wrapped_object" and the
-               name of the type of the object that is passed (i.e. if an object of type "Sensor" is passed, then the
+               this object can be obtained from two member attributes of TimedTask under the name "wrapped_object" and
+               the name of the type of the object that is passed (i.e. if an object of type "Sensor" is passed, then the
                reference would be "myTimedTask.Sensor"). This can be set as None if you do not want this feature or are
                not using an object.
         :type object_to_wrap: object
