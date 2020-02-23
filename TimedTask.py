@@ -61,6 +61,8 @@ class TimedTask(object):
         """The thread that runs the task loop"""
         self.stop_flag = threading.Event()
         """A flag that when set will stop the timer_thread"""
+        self.output = None
+        """A holder that get what is returned from calling_function and pass it to forwarding_function"""
 
     def _sample_loop(self):
         current_time = time.time()
