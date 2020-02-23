@@ -33,3 +33,12 @@ update rate.
 
 
     * **forwarding_function** (*function*) – An additional optional function that can be specified to be called every loop.
+
+
+
+#### start()
+This initiates the loop and will begin calling the set function at the desired interval until stop() is called.
+
+
+#### stop()
+This stops the task from running.
