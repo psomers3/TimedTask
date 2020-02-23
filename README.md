@@ -1,27 +1,35 @@
+<!-- TimedTask documentation master file, created by
+sphinx-quickstart on Sun Feb 23 12:20:30 2020.
+You can adapt this file completely to your liking, but it should at least
+contain the root `toctree` directive. -->
 # TimedTask
-A python wrapper for an object to run a function at a set interval. This is set-up to not be a true wrapper so that it is compatible with third-party objects.
 
-class TimedTask(object):
+An thread-based module to create timed execution of a function. See examples folder for how to use.
 
 
-The constructor for the TimedTask is 
-```python
-def __init__(self, 
-             object_to_wrap,
-             calling_function,
-             sampling_rate=0.1,
-             calling_func_args=None,
-             forwarding_function=None):
-```
+### class TimedTask.TimedTask(calling_function, object_to_wrap=None, sampling_rate: float = 0.1, calling_func_args: list = None, forwarding_function=None)
+Creates an object that maintains a reference (if desired) to another object and runs a function at a given fixed
+update rate.
 
-```object_to_wrap``` is an instance of an object that is associated with the repetitive task. References to this object can be obtained from two member methods of TimedTask under the name ```wrapped_object``` and the name of the type of the object that is passed (i.e. if an object of type "Sensor" is passed, then the reference would be "myTimedTask.Sensor"). This can be set as None if you do not want this feature or are not using an object.
 
-```calling_function``` is the function that will be called at the set interval.
+* **Parameters**
 
-```sampling_rate``` is the period in seconds of task loop.
+    
+    * **calling_function** (*function*) – The function that will be called at the set interval.
 
-```calling_func_args``` any arguments that need to be passed to the calling_function when it is called.
 
-```forwarding_function``` an additional optional function that can be specified to be called every loop.
+    * **object_to_wrap** (*object*) – An instance of an object that is associated with the repetitive task. References to
+    this object can be obtained from two member methods of TimedTask under the name “wrapped_object” and the
+    name of the type of the object that is passed (i.e. if an object of type “Sensor” is passed, then the
+    reference would be “myTimedTask.Sensor”). This can be set as None if you do not want this feature or are
+    not using an object.
 
-For an example of how to use this, see the examples folder.
+
+    * **sampling_rate** (*float*) – The frequency in Hz of task loop.
+
+
+    * **calling_func_args** (*list*) – A list of any arguments that need to be passed to the calling_function when it is
+    called.
+
+
+    * **forwarding_function** (*function*) – An additional optional function that can be specified to be called every loop.
