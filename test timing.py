@@ -1,5 +1,5 @@
 import time
-from EV_Modules import TimedTask
+from TimedTask import TimedTask
 
 
 class MySensor(object):
