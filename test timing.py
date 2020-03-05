@@ -24,10 +24,10 @@ if __name__ == '__main__':
         print("values:", values, "time elapsed: ", (time.time() - count[1])/count[0])
 
 
-    timed_sensor = TimedTask(new_sensor,
-                             calling_function=new_sensor.get_value,
+    timed_sensor = TimedTask(calling_function=new_sensor.get_value,
+                             object_to_wrap=new_sensor,
                              forwarding_function=print_time,
-                             sampling_rate=50)
+                             sampling_rate=1)
     timed_sensor.start()
     try:
         while 1:

@@ -7,7 +7,7 @@ class TimedTask(object):
                  calling_function,
                  object_to_wrap=None,
                  sampling_rate=10,
-                 calling_func_args=None,
+                 calling_func_args=[],
                  forwarding_function=None):
         """
         Creates an object that maintains a reference (if desired) to another object and runs a function at a given fixed
@@ -68,10 +68,16 @@ class TimedTask(object):
         current_time = time.time()
 
         while not self.stop_flag.is_set():
+            start = True
             while time.time() - current_time < self.sampling_period:
+                start = False
                 time.sleep(0.00001)
+            if start:
+                pass
+                #print('callback "' + self.calling_function.__name__ + '" cannot run this fast.')
+
             current_time = time.time()
-            self.output = self.calling_function()
+            self.output = self.calling_function(*self.calling_func_args)
             self.forwarding_function(self.output)
 
     def start(self):
@@ -87,5 +93,10 @@ class TimedTask(object):
         self.stop_flag.set()
         self.timer_thread.join()
 
-
-
+    def set_sampling_rate(self, new_rate):
+        """
+        Changes the rate at which the task is running
+        :param new_rate: new update rate in Hz
+        """
+        self.sampling_rate = new_rate
+        self.sampling_period = 1/new_rate
