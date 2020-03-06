@@ -77,7 +77,12 @@ class TimedTask(object):
                 #print('callback "' + self.calling_function.__name__ + '" cannot run this fast.')
 
             current_time = time.time()
-            self.output = self.calling_function(*self.calling_func_args)
+            try:
+                self.output = self.calling_function(*self.calling_func_args)
+            except Exception as e:
+                print(e)
+                print('could not execute function "' + self.calling_function.__name__ + '"')
+                continue
             self.forwarding_function(self.output)
 
     def start(self):
